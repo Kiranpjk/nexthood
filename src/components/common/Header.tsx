@@ -47,72 +47,78 @@ export default function Header() {
                 <Link href={link.href}>{link.label}</Link>
              </Button>
           ))}
-          {user ? (
-            <Button variant="outline" onClick={handleLogout}>
-              Log Out
-            </Button>
-          ) : (
-            <>
-              <Button variant="outline" asChild>
-                <Link href="/login">Log In</Link>
-              </Button>
-              <Button asChild>
-                <Link href="/signup">Sign Up</Link>
-              </Button>
-            </>
-          )}
         </nav>
 
-        {/* Mobile Navigation */}
-        <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Open menu</span>
+        {/* Auth Buttons & Mobile Menu */}
+        <div className="flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-2">
+            {user ? (
+              <Button variant="outline" onClick={handleLogout}>
+                Log Out
               </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <div className="flex flex-col gap-4 py-6">
-                <Link href="/" className="mb-4">
-                  <Logo />
-                </Link>
-                {navLinks.map((link) => (
-                  <SheetClose key={link.href} asChild>
-                    <Link
-                      href={link.href}
-                      className={cn(
-                        "text-lg font-medium",
-                        pathname === link.href ? "text-primary" : "text-muted-foreground"
-                      )}
-                    >
-                      {link.label}
-                    </Link>
-                  </SheetClose>
-                ))}
-                <div className="pt-6 mt-6 border-t">
-                  {user ? (
-                     <Button variant="outline" onClick={handleLogout} className="w-full">
-                        Log Out
-                     </Button>
-                  ) : (
-                    <div className="flex flex-col gap-4">
-                      <SheetClose asChild>
-                         <Button variant="outline" asChild className="w-full">
-                            <Link href="/login">Log In</Link>
-                         </Button>
-                      </SheetClose>
-                      <SheetClose asChild>
-                         <Button asChild className="w-full">
-                            <Link href="/signup">Sign Up</Link>
-                         </Button>
-                      </SheetClose>
-                    </div>
-                  )}
+            ) : (
+              <>
+                <Button variant="outline" asChild>
+                  <Link href="/login">Log In</Link>
+                </Button>
+                <Button asChild>
+                  <Link href="/signup">Sign Up</Link>
+                </Button>
+              </>
+            )}
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Open menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right">
+                <div className="flex flex-col gap-4 py-6">
+                  <Link href="/" className="mb-4">
+                    <Logo />
+                  </Link>
+                  {navLinks.map((link) => (
+                    <SheetClose key={link.href} asChild>
+                      <Link
+                        href={link.href}
+                        className={cn(
+                          "text-lg font-medium",
+                          pathname === link.href ? "text-primary" : "text-muted-foreground"
+                        )}
+                      >
+                        {link.label}
+                      </Link>
+                    </SheetClose>
+                  ))}
+                  <div className="pt-6 mt-6 border-t">
+                    {user ? (
+                       <Button variant="outline" onClick={handleLogout} className="w-full">
+                          Log Out
+                       </Button>
+                    ) : (
+                      <div className="flex flex-col gap-4">
+                        <SheetClose asChild>
+                           <Button variant="outline" asChild className="w-full">
+                              <Link href="/login">Log In</Link>
+                           </Button>
+                        </SheetClose>
+                        <SheetClose asChild>
+                           <Button asChild className="w-full">
+                              <Link href="/signup">Sign Up</Link>
+                           </Button>
+                        </SheetClose>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
 
       </div>
