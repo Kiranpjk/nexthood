@@ -16,7 +16,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="flex items-center justify-center py-20 md:py-32 bg-secondary/30">
+        <section className="flex items-center justify-center py-16 sm:py-24 md:py-32 bg-secondary/30">
           <div className="container px-4 md:px-6 text-center animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
             <div className="max-w-3xl mx-auto space-y-6">
               <h1 className="text-4xl font-headline font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
@@ -37,7 +37,7 @@ export default function Home() {
         </section>
 
         {/* How It Works Section */}
-        <section id="how-it-works" className="py-20 md:py-28">
+        <section id="how-it-works" className="py-16 sm:py-20 md:py-28">
             <div className="container px-4 md:px-6">
                 <div className="text-center max-w-2xl mx-auto mb-12 animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-100">
                     <h2 className="text-3xl font-headline font-bold sm:text-4xl">Your Dream Home in 3 Simple Steps</h2>
@@ -70,7 +70,7 @@ export default function Home() {
         </section>
 
         {/* Featured Neighborhoods Section */}
-        <section id="featured" className="py-20 md:py-28 bg-secondary/30">
+        <section id="featured" className="py-16 sm:py-20 md:py-28 bg-secondary/30">
             <div className="container px-4 md:px-6">
                 <div className="text-center max-w-2xl mx-auto mb-12 animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-100">
                     <h2 className="text-3xl font-headline font-bold sm:text-4xl">Explore Top Neighborhoods</h2>
@@ -127,7 +127,7 @@ export default function Home() {
         </section>
         
         {/* Testimonials Section */}
-        <section id="testimonials" className="py-20 md:py-28">
+        <section id="testimonials" className="py-16 sm:py-20 md:py-28">
             <div className="container px-4 md:px-6">
                 <div className="text-center max-w-2xl mx-auto mb-12 animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-100">
                     <h2 className="text-3xl font-headline font-bold sm:text-4xl">What Our Users Say</h2>
@@ -168,7 +168,7 @@ export default function Home() {
         </section>
 
         {/* Contact Us Section */}
-        <section id="contact" className="py-20 md:py-28 bg-secondary/30">
+        <section id="contact" className="py-16 sm:py-20 md:py-28 bg-secondary/30">
             <div className="container px-4 md:px-6">
                 <div className="text-center max-w-2xl mx-auto mb-12 animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-100">
                     <h2 className="text-3xl font-headline font-bold sm:text-4xl">Get In Touch</h2>

@@ -7,11 +7,22 @@ import { cn } from "@/lib/utils";
 import { useAuth } from "@/context/AuthContext";
 import { auth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { Menu } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/dashboard", label: "Neighborhood Finder" },
+  { href: "/support", label: "Support" },
+  { href: "/contact", label: "Contact Us" },
+];
+
 
 export default function Header() {
   const { user } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleLogout = async () => {
     await signOut(auth);
@@ -23,26 +34,19 @@ export default function Header() {
       "sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
       "animate-in fade-in-0 duration-500"
     )}>
-      <div className="container flex h-16 items-center">
-        <div className="mr-auto flex items-center gap-4">
+      <div className="container flex h-16 items-center justify-between">
+        
           <Link href="/" className="flex items-center gap-2">
             <Logo />
           </Link>
-        </div>
-
-        <nav className="flex items-center gap-2">
-           <Button variant="ghost" asChild>
-            <Link href="/">Home</Link>
-          </Button>
-          <Button variant="ghost" asChild>
-            <Link href="/dashboard">Neighborhood Finder</Link>
-          </Button>
-          <Button variant="ghost" asChild>
-            <Link href="/support">Support</Link>
-          </Button>
-          <Button variant="ghost" asChild>
-            <Link href="/contact">Contact Us</Link>
-          </Button>
+        
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-2">
+           {navLinks.map(link => (
+             <Button key={link.href} variant={pathname === link.href ? "secondary" : "ghost"} asChild>
+                <Link href={link.href}>{link.label}</Link>
+             </Button>
+          ))}
           {user ? (
             <Button variant="outline" onClick={handleLogout}>
               Log Out
@@ -58,6 +62,59 @@ export default function Header() {
             </>
           )}
         </nav>
+
+        {/* Mobile Navigation */}
+        <div className="md:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Open menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <div className="flex flex-col gap-4 py-6">
+                <Link href="/" className="mb-4">
+                  <Logo />
+                </Link>
+                {navLinks.map((link) => (
+                  <SheetClose key={link.href} asChild>
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "text-lg font-medium",
+                        pathname === link.href ? "text-primary" : "text-muted-foreground"
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  </SheetClose>
+                ))}
+                <div className="pt-6 mt-6 border-t">
+                  {user ? (
+                     <Button variant="outline" onClick={handleLogout} className="w-full">
+                        Log Out
+                     </Button>
+                  ) : (
+                    <div className="flex flex-col gap-4">
+                      <SheetClose asChild>
+                         <Button variant="outline" asChild className="w-full">
+                            <Link href="/login">Log In</Link>
+                         </Button>
+                      </SheetClose>
+                      <SheetClose asChild>
+                         <Button asChild className="w-full">
+                            <Link href="/signup">Sign Up</Link>
+                         </Button>
+                      </SheetClose>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+
       </div>
     </header>
   );

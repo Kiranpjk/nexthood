@@ -26,7 +26,7 @@ export default function NeighborhoodList({ neighborhoods, isLoading }: Neighborh
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {neighborhoods.map((n) => (
         <NeighborhoodCard key={n.id} neighborhood={n} />
       ))}
