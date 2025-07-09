@@ -1,8 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { useRouter, usePathname } from 'next/navigation';
-import { useAuth } from '@/context/AuthContext';
 import Header from '@/components/common/Header';
 import PreferenceForm from '@/components/dashboard/PreferenceForm';
 import FilterPanel, { type Filters } from '@/components/dashboard/FilterPanel';
@@ -11,9 +9,6 @@ import { runEvaluation } from '@/actions/evaluateNeighborhoods';
 import type { EvaluatedNeighborhood } from '@/lib/types';
 
 export default function DashboardPage() {
-  const { user, loading: authLoading } = useAuth();
-  const router = useRouter();
-  const pathname = usePathname();
   const [evaluatedNeighborhoods, setEvaluatedNeighborhoods] = React.useState<EvaluatedNeighborhood[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [filters, setFilters] = React.useState<Filters>({
@@ -21,25 +16,16 @@ export default function DashboardPage() {
     minWalkScore: 0,
     amenities: [],
   });
-  
-  React.useEffect(() => {
-    if (!authLoading && !user) {
-      sessionStorage.setItem('redirectAfterLogin', pathname);
-      router.push('/login');
-    }
-  }, [user, authLoading, router, pathname]);
 
   React.useEffect(() => {
-    if (user) {
-        const initialLoad = async () => {
-            setIsLoading(true);
-            const result = await runEvaluation('');
-            setEvaluatedNeighborhoods(result);
-            setIsLoading(false);
-        };
-        initialLoad();
-    }
-  }, [user]);
+    const initialLoad = async () => {
+      setIsLoading(true);
+      const result = await runEvaluation('');
+      setEvaluatedNeighborhoods(result);
+      setIsLoading(false);
+    };
+    initialLoad();
+  }, []);
 
   const handleEvaluation = async (preferences: string) => {
     setIsLoading(true);
@@ -56,10 +42,6 @@ export default function DashboardPage() {
       return rentMatch && walkScoreMatch && amenitiesMatch;
     });
   }, [evaluatedNeighborhoods, filters]);
-
-  if (authLoading || !user) {
-    return null; 
-  }
 
   return (
     <div className="flex flex-col min-h-screen">
