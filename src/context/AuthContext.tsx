@@ -91,6 +91,18 @@ NEXT_PUBLIC_FIREBASE_APP_ID="YOUR_APP_ID"`}
                    </p>
                 </div>
 
+                <Separator />
+
+                {/* Step 4: Authorize Domain */}
+                <div>
+                  <h3 className="font-bold text-lg mb-2">Step 4: Authorize Your Domain for Google Sign-In</h3>
+                  <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
+                      <li>In the Firebase Console, under <span className="font-semibold text-foreground">Authentication &gt; Settings &gt; Authorized domains</span>, click <span className="font-semibold text-foreground">Add domain</span>.</li>
+                      <li>For local development, you must add <code className="bg-muted px-1 py-0.5 rounded text-foreground">localhost</code>.</li>
+                      <li>This is the most common cause for the <code className="bg-destructive/80 px-1 py-0.5 rounded text-destructive">auth/unauthorized-domain</code> error.</li>
+                  </ol>
+                </div>
+
               </CardContent>
             </Card>
         </div>
