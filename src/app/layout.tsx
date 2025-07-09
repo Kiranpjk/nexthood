@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Chatbot from "@/components/common/Chatbot";
 import { AuthProvider } from "@/context/AuthContext";
 import Footer from "@/components/common/Footer";
+import { PageLoader } from "@/components/common/PageLoader";
 
 export const metadata: Metadata = {
   title: "NeighborWise",
@@ -25,6 +26,7 @@ export default function RootLayout({
       </head>
       <body className={cn("font-body antialiased flex flex-col min-h-screen")}>
         <AuthProvider>
+          <PageLoader />
           <div className="flex-1">
             {children}
           </div>
