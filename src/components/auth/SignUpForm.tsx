@@ -68,7 +68,7 @@ export default function SignUpForm() {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
       router.push('/dashboard');
-    } catch (error: any) => {
+    } catch (error: any) {
       toast({
         title: 'Google Sign-In Failed',
         description: error.message || 'Could not sign in with Google.',
