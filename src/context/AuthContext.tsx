@@ -6,6 +6,7 @@ import { auth, isFirebaseConfigured } from '@/lib/firebase';
 import { Loader2 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Logo from '@/components/ui/logo';
+import { Separator } from '@/components/ui/separator';
 
 interface AuthContextType {
   user: User | null;
@@ -35,33 +36,61 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   if (!isFirebaseConfigured) {
     return (
         <div className="flex flex-col min-h-screen items-center justify-center bg-muted/40 p-4 text-center">
-           <Card className="max-w-2xl w-full shadow-lg">
+           <Card className="max-w-3xl w-full shadow-lg">
               <CardHeader>
                 <div className="mx-auto pb-4"><Logo /></div>
-                <CardTitle className="text-2xl font-headline">Firebase Configuration Incomplete</CardTitle>
+                <CardTitle className="text-2xl font-headline">Complete Your Firebase Setup</CardTitle>
                 <CardDescription>
-                  Your Firebase credentials are not fully set up. Please follow the instructions below to configure your project.
+                  Authentication is not fully configured. Follow these steps in the Firebase Console and in your code.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4 text-sm text-left">
-                <p className="font-semibold">To get your Firebase credentials:</p>
-                <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
-                    <li>Go to the <a href="https://console.firebase.google.com/" target="_blank" rel="noopener noreferrer" className="text-primary underline">Firebase Console</a>.</li>
-                    <li>Create a new project or select an existing one.</li>
-                    <li>Go to Project Settings (click the gear icon), and under the "General" tab, scroll to "Your apps".</li>
-                    <li>Click the Web icon (<code>&lt;/&gt;</code>) to register a new web app if you haven't already.</li>
-                    <li>Find and copy the `firebaseConfig` object values into your <code className="bg-muted px-1 py-0.5 rounded text-foreground">.env</code> file at the root of your project.</li>
-                    <li><strong>Important:</strong> You must restart your development server after updating the <code className="bg-muted px-1 py-0.5 rounded text-foreground">.env</code> file.</li>
-                </ol>
-                 <p className="font-semibold pt-2">Ensure all the following variables are present and correct in your <code className="bg-muted px-1 py-0.5 rounded text-foreground">.env</code> file:</p>
-                 <pre className="bg-muted p-4 rounded-md text-xs overflow-x-auto text-muted-foreground">
+              <CardContent className="space-y-6 text-sm text-left">
+                
+                {/* Step 1: Enable Authentication */}
+                <div>
+                  <h3 className="font-bold text-lg mb-2">Step 1: Enable Authentication Methods</h3>
+                  <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
+                      <li>Open your project in the <a href="https://console.firebase.google.com/" target="_blank" rel="noopener noreferrer" className="text-primary underline">Firebase Console</a>.</li>
+                      <li>In the left-hand menu, go to <span className="font-semibold text-foreground">Build &gt; Authentication</span>.</li>
+                      <li>Click the <span className="font-semibold text-foreground">"Get started"</span> button if it's your first time.</li>
+                      <li>Go to the <span className="font-semibold text-foreground">"Sign-in method"</span> tab.</li>
+                      <li>Click on <span className="font-semibold text-foreground">"Google"</span> in the list of providers.</li>
+                      <li>Enable the toggle switch, provide a project support email, and click <span className="font-semibold text-foreground">Save</span>.</li>
+                  </ol>
+                </div>
+
+                <Separator />
+
+                {/* Step 2: Get Web App Credentials */}
+                <div>
+                  <h3 className="font-bold text-lg mb-2">Step 2: Get Web App Credentials</h3>
+                  <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
+                      <li>In your Firebase Console, go to <span className="font-semibold text-foreground">Project settings</span> (click the gear icon <code className="bg-muted px-1 py-0.5 rounded text-foreground">⚙️</code>).</li>
+                      <li>Under the "General" tab, scroll to <span className="font-semibold text-foreground">"Your apps"</span>.</li>
+                      <li>If you don't have a web app, click the Web icon (<code className="bg-muted px-1 py-0.5 rounded text-foreground">&lt;/&gt;</code>) to create one.</li>
+                      <li>In the app settings, find the <code className="bg-muted px-1 py-0.5 rounded text-foreground">firebaseConfig</code> object and copy the values.</li>
+                  </ol>
+                </div>
+                
+                <Separator />
+
+                {/* Step 3: Update .env file */}
+                <div>
+                   <h3 className="font-bold text-lg mb-2">Step 3: Update Your <code className="bg-card px-1 py-0.5 rounded text-foreground">.env</code> File</h3>
+                   <p className="text-muted-foreground mb-2">Paste the credentials you copied into the <code className="bg-card px-1 py-0.5 rounded text-foreground">.env</code> file at the root of this project. Ensure all variables are set.</p>
+                   <pre className="bg-muted p-4 rounded-md text-xs overflow-x-auto text-muted-foreground">
 {`NEXT_PUBLIC_FIREBASE_API_KEY="YOUR_API_KEY"
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN="YOUR_AUTH_DOMAIN"
 NEXT_PUBLIC_FIREBASE_PROJECT_ID="YOUR_PROJECT_ID"
 NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET="YOUR_STORAGE_BUCKET"
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID="YOUR_MESSAGING_SENDER_ID"
 NEXT_PUBLIC_FIREBASE_APP_ID="YOUR_APP_ID"`}
-                </pre>
+                   </pre>
+                   <p className="text-muted-foreground mt-2">
+                    <span className="font-bold text-destructive">Important:</span> You must restart your development server after updating the <code className="bg-card px-1 py-0.5 rounded text-foreground">.env</code> file for the changes to apply.
+                   </p>
+                </div>
+
               </CardContent>
             </Card>
         </div>
