@@ -60,7 +60,7 @@ export default function OnboardingForm() {
   return (
       <Card className="w-full max-w-3xl shadow-lg animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
         <CardHeader>
-            <CardTitle className="text-3xl font-headline">Welcome to NeighborWise, {user?.displayName || 'friend'}!</CardTitle>
+            <CardTitle className="text-3xl font-headline">Welcome to NextHood, {user?.displayName || 'friend'}!</CardTitle>
             <CardDescription>To help us find your perfect neighborhood, please answer a few questions. You can always change this later.</CardDescription>
         </CardHeader>
         <CardContent>

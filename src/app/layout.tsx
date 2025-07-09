@@ -8,7 +8,7 @@ import Footer from "@/components/common/Footer";
 import { PageLoader } from "@/components/common/PageLoader";
 
 export const metadata: Metadata = {
-  title: "NeighborWise",
+  title: "NextHood",
   description: "Find your perfect neighborhood.",
 };
 

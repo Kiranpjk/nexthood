@@ -85,7 +85,7 @@ export default function LoginForm() {
     <Card className="w-full max-w-md shadow-lg">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl font-headline">Welcome Back</CardTitle>
-        <CardDescription>Sign in to find your perfect neighborhood</CardDescription>
+        <CardDescription>Sign in to your NextHood account</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <Button variant="outline" className="w-full" onClick={handleGoogleSignIn} disabled={isLoading || isGoogleLoading}>

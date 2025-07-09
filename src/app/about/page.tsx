@@ -12,11 +12,11 @@ export default function AboutPage() {
             <div className="mx-auto mb-4">
               <Logo />
             </div>
-            <CardTitle className="text-3xl font-headline">About NeighborWise</CardTitle>
+            <CardTitle className="text-3xl font-headline">About NextHood</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 text-muted-foreground text-center">
             <p>
-              Welcome to NeighborWise, your trusted partner in finding the perfect place to call home in India. 
+              Welcome to NextHood, your trusted partner in finding the perfect place to call home in India. 
               Our mission is to simplify the complex and often overwhelming process of searching for a neighborhood 
               that truly matches your lifestyle, preferences, and needs.
             </p>
@@ -28,12 +28,12 @@ export default function AboutPage() {
               personalized, insightful recommendations.
             </p>
             <p>
-              At NeighborWise, we are a team of technologists, data scientists, and real estate enthusiasts passionate 
+              At NextHood, we are a team of technologists, data scientists, and real estate enthusiasts passionate 
               about making your relocation journey as seamless and confident as possible. We are committed to providing 
               accurate, up-to-date information to help you make one of the most important decisions of your life.
             </p>
             <p>
-              Thank you for choosing NeighborWise. Let's find your perfect neighborhood, together.
+              Thank you for choosing NextHood. Let's find your perfect neighborhood, together.
             </p>
           </CardContent>
         </Card>

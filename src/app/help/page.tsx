@@ -11,7 +11,7 @@ export default function HelpPage() {
         <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl font-headline font-bold">How can we help?</h1>
             <p className="text-lg text-muted-foreground mt-2">
-              Find the resources you need to get the most out of NeighborWise.
+              Find the resources you need to get the most out of NextHood.
             </p>
         </div>
 

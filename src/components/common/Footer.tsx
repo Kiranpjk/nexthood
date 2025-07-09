@@ -48,7 +48,7 @@ export default function Footer() {
         </div>
         <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground text-center md:text-left">
-            © {new Date().getFullYear()} NeighborWise. All Rights Reserved.
+            © {new Date().getFullYear()} NextHood. All Rights Reserved.
           </p>
         </div>
       </div>

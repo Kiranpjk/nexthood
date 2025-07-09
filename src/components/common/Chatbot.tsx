@@ -80,7 +80,7 @@ export default function Chatbot() {
       {isOpen && (
         <Card className="fixed bottom-24 right-6 z-50 w-full max-w-sm shadow-xl flex flex-col animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle className="font-headline">NeighborWise Assistant</CardTitle>
+            <CardTitle className="font-headline">NextHood Assistant</CardTitle>
             <Button variant="ghost" size="icon" onClick={handleToggle} className="h-6 w-6">
                 <X className="h-4 w-4" />
             </Button>

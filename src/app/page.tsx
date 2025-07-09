@@ -20,7 +20,7 @@ export default function Home() {
                 Find Your Perfect Neighborhood
               </h1>
               <p className="text-lg md:text-xl text-foreground/80">
-                NeighborWise uses AI to match your lifestyle with the ideal community in India. Stop searching, start living.
+                NextHood uses AI to match your lifestyle with the ideal community in India. Stop searching, start living.
               </p>
               <div className="flex justify-center">
                 <Button asChild size="lg">
@@ -142,7 +142,7 @@ export default function Home() {
                                     <p className="text-sm text-muted-foreground">Moved to Bengaluru</p>
                                 </div>
                             </div>
-                            <p className="text-muted-foreground italic">"NeighborWise was a lifesaver! The AI matching was scarily accurate. It found us a perfect spot in Indiranagar that we would have never discovered on our own."</p>
+                            <p className="text-muted-foreground italic">"NextHood was a lifesaver! The AI matching was scarily accurate. It found us a perfect spot in Indiranagar that we would have never discovered on our own."</p>
                         </CardContent>
                     </Card>
                     <Card className="bg-secondary/30 animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-300">
@@ -171,7 +171,7 @@ export default function Home() {
                     <CardHeader>
                         <CardTitle className="text-3xl font-headline font-bold">Have Feedback or Questions?</CardTitle>
                         <CardDescription className="mt-4 text-lg text-muted-foreground">
-                            We're always looking to improve. Let us know how we can make NeighborWise better for you.
+                            We're always looking to improve. Let us know how we can make NextHood better for you.
                         </CardDescription>
                     </CardHeader>
                     <CardContent>

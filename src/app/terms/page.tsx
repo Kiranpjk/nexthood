@@ -13,7 +13,7 @@ export default function TermsOfServicePage() {
           </CardHeader>
           <CardContent className="space-y-4 text-muted-foreground">
             <p>
-              Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the NeighborWise website (the "Service") operated by NeighborWise ("us", "we", or "our").
+              Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the NextHood website (the "Service") operated by NextHood ("us", "we", or "our").
             </p>
             <h2 className="text-xl font-semibold text-foreground pt-4">Accounts</h2>
             <p>
@@ -21,7 +21,7 @@ export default function TermsOfServicePage() {
             </p>
             <h2 className="text-xl font-semibold text-foreground pt-4">Intellectual Property</h2>
             <p>
-              The Service and its original content, features, and functionality are and will remain the exclusive property of NeighborWise and its licensors. The Service is protected by copyright, trademark, and other laws of both the India and foreign countries.
+              The Service and its original content, features, and functionality are and will remain the exclusive property of NextHood and its licensors. The Service is protected by copyright, trademark, and other laws of both the India and foreign countries.
             </p>
             <h2 className="text-xl font-semibold text-foreground pt-4">Disclaimer</h2>
             <p>

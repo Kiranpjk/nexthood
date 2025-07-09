@@ -92,7 +92,7 @@ export default function SignUpForm() {
     <Card className="w-full max-w-md shadow-lg">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl font-headline">Create an Account</CardTitle>
-        <CardDescription>Join NeighborWise to find your community</CardDescription>
+        <CardDescription>Join NextHood to find your community</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <Button variant="outline" className="w-full" onClick={handleGoogleSignIn} disabled={isLoading || isGoogleLoading}>

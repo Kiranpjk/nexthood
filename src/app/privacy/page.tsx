@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage() {
           </CardHeader>
           <CardContent className="space-y-4 text-muted-foreground">
             <p>
-              NeighborWise ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by NeighborWise.
+              NextHood ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by NextHood.
             </p>
             <h2 className="text-xl font-semibold text-foreground pt-4">Information We Collect</h2>
             <p>

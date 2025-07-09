@@ -33,7 +33,7 @@ export default function BlogPage() {
       <Header />
       <main className="flex-1 container py-12 px-4 md:px-6">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-headline font-bold">NeighborWise Blog</h1>
+          <h1 className="text-4xl font-headline font-bold">NextHood Blog</h1>
           <p className="text-lg text-muted-foreground mt-2">Insights and stories about life in India's vibrant neighborhoods.</p>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
