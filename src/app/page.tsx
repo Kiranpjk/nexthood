@@ -164,6 +164,27 @@ export default function Home() {
                 </div>
             </div>
         </section>
+
+        {/* Feedback Section */}
+        <section id="feedback" className="py-16 sm:py-20 md:py-28 bg-secondary/30">
+            <div className="container px-4 md:px-6">
+                <Card className="max-w-3xl mx-auto text-center p-8 shadow-lg">
+                    <CardHeader>
+                        <CardTitle className="text-3xl font-headline font-bold">Have Feedback or Questions?</CardTitle>
+                        <CardDescription className="mt-4 text-lg text-muted-foreground">
+                            We're always looking to improve. Let us know how we can make NeighborWise better for you.
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                         <Button asChild size="lg">
+                            <Link href="/contact">
+                                Give Feedback
+                            </Link>
+                        </Button>
+                    </CardContent>
+                </Card>
+            </div>
+        </section>
       </main>
       <Footer />
     </div>
