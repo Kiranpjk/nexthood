@@ -6,9 +6,7 @@ import { ArrowRight, Pencil, Search, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import Footer from "@/components/common/Footer";
 
 export default function Home() {
   return (
@@ -166,42 +164,8 @@ export default function Home() {
                 </div>
             </div>
         </section>
-
-        {/* Contact Us Section */}
-        <section id="contact" className="py-16 sm:py-20 md:py-28 bg-secondary/30">
-            <div className="container px-4 md:px-6">
-                <div className="text-center max-w-2xl mx-auto mb-12 animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-100">
-                    <h2 className="text-3xl font-headline font-bold sm:text-4xl">Get In Touch</h2>
-                    <p className="mt-4 text-lg text-muted-foreground">Have questions or feedback? We'd love to hear from you.</p>
-                </div>
-                <Card className="max-w-2xl mx-auto shadow-lg animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-200">
-                  <CardContent className="p-6">
-                    <form className="space-y-4">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="home-name">Name</Label>
-                          <Input id="home-name" placeholder="Your Name" />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="home-email">Email</Label>
-                          <Input id="home-email" type="email" placeholder="your@email.com" />
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="home-subject">Subject</Label>
-                        <Input id="home-subject" placeholder="What's this about?" />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="home-message">Message</Label>
-                        <Textarea id="home-message" placeholder="Your message..." rows={5} />
-                      </div>
-                      <Button type="submit">Send Message</Button>
-                    </form>
-                  </CardContent>
-                </Card>
-            </div>
-        </section>
       </main>
+      <Footer />
     </div>
   );
 }
