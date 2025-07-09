@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
@@ -49,13 +50,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 {/* Step 1: Enable Authentication */}
                 <div>
                   <h3 className="font-bold text-lg mb-2">Step 1: Enable Authentication Methods</h3>
+                   <div className="bg-destructive/10 border-l-4 border-destructive text-destructive-foreground p-4 rounded-md mb-4">
+                      <p className="font-bold">Important: The "auth/operation-not-allowed" error means you have not enabled the necessary sign-in providers in the Firebase Console. You must complete the steps below.</p>
+                  </div>
                   <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
                       <li>Open your project in the <a href="https://console.firebase.google.com/" target="_blank" rel="noopener noreferrer" className="text-primary underline">Firebase Console</a>.</li>
                       <li>In the left-hand menu, go to <span className="font-semibold text-foreground">Build &gt; Authentication</span>.</li>
                       <li>Click the <span className="font-semibold text-foreground">"Get started"</span> button if it's your first time.</li>
-                      <li>Go to the <span className="font-semibold text-foreground">"Sign-in method"</span> tab.</li>
-                      <li>Click on <span className="font-semibold text-foreground">"Email/Password"</span>, enable it, and click <span className="font-semibold text-foreground">Save</span>. This is required for manual signup.</li>
-                      <li>Click on <span className="font-semibold text-foreground">"Google"</span> in the list of providers, enable the toggle switch, provide a project support email, and click <span className="font-semibold text-foreground">Save</span>.</li>
+                      <li>Go to the <span className="font-semibold text-foreground">Sign-in method</span> tab.</li>
+                      <li>
+                          <span className="font-bold text-foreground">To fix the error, you MUST enable the "Email/Password" provider.</span> Click on it in the list, toggle it on, and click <span className="font-semibold text-foreground">Save</span>. This is required for the sign-up form.
+                      </li>
+                      <li>
+                          To enable Google Sign-In, click on <span className="font-semibold text-foreground">"Google"</span> in the list of providers, enable the toggle switch, provide a project support email, and click <span className="font-semibold text-foreground">Save</span>.
+                      </li>
                   </ol>
                 </div>
 
