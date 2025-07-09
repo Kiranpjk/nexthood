@@ -54,8 +54,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                       <li>In the left-hand menu, go to <span className="font-semibold text-foreground">Build &gt; Authentication</span>.</li>
                       <li>Click the <span className="font-semibold text-foreground">"Get started"</span> button if it's your first time.</li>
                       <li>Go to the <span className="font-semibold text-foreground">"Sign-in method"</span> tab.</li>
-                      <li>Click on <span className="font-semibold text-foreground">"Google"</span> in the list of providers.</li>
-                      <li>Enable the toggle switch, provide a project support email, and click <span className="font-semibold text-foreground">Save</span>.</li>
+                      <li>Click on <span className="font-semibold text-foreground">"Email/Password"</span>, enable it, and click <span className="font-semibold text-foreground">Save</span>. This is required for manual signup.</li>
+                      <li>Click on <span className="font-semibold text-foreground">"Google"</span> in the list of providers, enable the toggle switch, provide a project support email, and click <span className="font-semibold text-foreground">Save</span>.</li>
                   </ol>
                 </div>
 
