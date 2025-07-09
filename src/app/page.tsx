@@ -168,7 +168,7 @@ export default function Home() {
         </section>
 
         {/* Contact Us Section */}
-        <section id="contact" className="py-20 md:py-28">
+        <section id="contact" className="py-20 md:py-28 bg-secondary/30">
             <div className="container px-4 md:px-6">
                 <div className="text-center max-w-2xl mx-auto mb-12 animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-100">
                     <h2 className="text-3xl font-headline font-bold sm:text-4xl">Get In Touch</h2>
@@ -199,23 +199,6 @@ export default function Home() {
                     </form>
                   </CardContent>
                 </Card>
-            </div>
-        </section>
-
-        {/* Final CTA Section */}
-        <section id="cta" className="py-20 md:py-28 bg-primary/10">
-            <div className="container px-4 md:px-6 text-center animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-100">
-                <div className="max-w-2xl mx-auto">
-                    <h2 className="text-3xl font-headline font-bold sm:text-4xl">Ready to Find Your Community?</h2>
-                    <p className="mt-4 text-lg text-muted-foreground">Let our AI guide you to a neighborhood that feels like home. Your journey starts here.</p>
-                     <div className="mt-8 flex justify-center">
-                        <Button asChild size="lg">
-                            <Link href="/dashboard">
-                            Start Exploring Now <ArrowRight className="ml-2 h-5 w-5" />
-                            </Link>
-                        </Button>
-                    </div>
-                </div>
             </div>
         </section>
       </main>
