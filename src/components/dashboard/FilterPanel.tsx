@@ -43,13 +43,13 @@ export default function FilterPanel({ filters, onFilterChange }: FilterPanelProp
         <div className="space-y-4">
           <div className="flex justify-between">
             <Label htmlFor="max-rent">Max Rent</Label>
-            <span className="text-sm font-medium text-primary">${filters.maxRent.toLocaleString()}</span>
+            <span className="text-sm font-medium text-primary">₹{filters.maxRent.toLocaleString()}</span>
           </div>
           <Slider
             id="max-rent"
-            min={500}
-            max={5000}
-            step={100}
+            min={10000}
+            max={100000}
+            step={1000}
             value={[filters.maxRent]}
             onValueChange={handleRentChange}
           />

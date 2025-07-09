@@ -1,6 +1,13 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Logo from "../ui/logo";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { ChevronDown } from "lucide-react";
 
 export default function Header() {
   return (
@@ -16,6 +23,26 @@ export default function Header() {
            <Button variant="ghost" asChild>
             <Link href="/dashboard">Dashboard</Link>
           </Button>
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost">
+                Resources <ChevronDown className="ml-1 h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem asChild>
+                 <Link href="/help">Help Center</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                 <Link href="/support">Support</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/contact">Contact Us</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <Button variant="outline" asChild>
             <Link href="/login">Log In</Link>
           </Button>

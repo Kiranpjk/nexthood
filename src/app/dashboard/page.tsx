@@ -12,7 +12,7 @@ export default function DashboardPage() {
   const [evaluatedNeighborhoods, setEvaluatedNeighborhoods] = React.useState<EvaluatedNeighborhood[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [filters, setFilters] = React.useState<Filters>({
-    maxRent: 5000,
+    maxRent: 100000,
     minWalkScore: 0,
     amenities: [],
   });

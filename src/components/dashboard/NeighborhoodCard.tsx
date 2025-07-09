@@ -42,7 +42,7 @@ export default function NeighborhoodCard({ neighborhood }: NeighborhoodCardProps
           <div className="flex flex-col items-center gap-1">
             <DollarSign className="h-6 w-6 text-accent" />
             <span className="text-sm text-muted-foreground">Avg. Rent</span>
-            <span className="font-semibold">${neighborhood.avgRent.toLocaleString()}</span>
+            <span className="font-semibold">₹{neighborhood.avgRent.toLocaleString()}</span>
           </div>
           <div className="flex flex-col items-center gap-1">
             <Footprints className="h-6 w-6 text-accent" />

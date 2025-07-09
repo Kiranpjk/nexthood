@@ -1,66 +1,66 @@
 import type { Neighborhood } from './types';
 
-export const AMENITIES = ['parks', 'schools', 'cafes', 'nightlife', 'gyms', 'groceries'];
+export const AMENITIES = ['parks', 'metro', 'cafes', 'nightlife', 'gyms', 'markets', 'schools'];
 
 export const neighborhoods: Neighborhood[] = [
   {
     id: 1,
-    name: 'Greenwood',
-    city: 'Seattle',
-    data: 'Greenwood is a family-friendly neighborhood with many parks, including the large Greenwood Park. It has several highly-rated public schools. The area is mostly residential with quiet streets. Coffee shops and small restaurants are scattered throughout. Public transport is available but not as frequent as downtown. The crime rate is lower than the city average.',
+    name: 'Koramangala',
+    city: 'Bengaluru',
+    data: 'Koramangala is a bustling neighborhood, popular with young professionals and startups. It has a mix of luxury apartments, cozy cafes, and vibrant nightlife. It is well-connected but can have traffic issues. Numerous parks and gyms are available.',
     image: 'https://placehold.co/600x400.png',
-    avgRent: 2200,
-    walkScore: 75,
-    amenities: ['parks', 'schools', 'cafes']
+    avgRent: 35000,
+    walkScore: 85,
+    amenities: ['parks', 'cafes', 'nightlife', 'gyms', 'markets']
   },
   {
     id: 2,
-    name: 'Capitol Hill',
-    city: 'Seattle',
-    data: 'Capitol Hill is a vibrant and dense urban neighborhood known for its bustling nightlife, diverse restaurants, and strong LGBTQ+ community. It offers excellent walkability and public transit options. Housing consists mainly of apartments and condos. While it has some parks like Volunteer Park, it is primarily a busy, energetic area with a higher noise level and crime rate compared to quieter suburbs.',
+    name: 'Bandra West',
+    city: 'Mumbai',
+    data: 'Bandra West is a trendy, upscale coastal suburb known for its celebrity residents, fashion boutiques, and sea-facing promenades. It has a vibrant nightlife and a wide variety of restaurants. It is well-connected by local trains.',
     image: 'https://placehold.co/600x400.png',
-    avgRent: 2500,
-    walkScore: 94,
-    amenities: ['nightlife', 'cafes', 'groceries', 'gyms']
+    avgRent: 80000,
+    walkScore: 90,
+    amenities: ['nightlife', 'cafes', 'markets', 'gyms']
   },
   {
     id: 3,
-    name: 'The Mission',
-    city: 'San Francisco',
-    data: 'The Mission District is a culturally rich neighborhood famous for its street art, taquerias, and sunny weather. It has a vibrant, youthful energy with many bars, music venues, and unique shops. Dolores Park is a major hub of activity. The area is very walkable and well-connected by BART and MUNI. Housing is a mix of Victorian homes and modern apartments, but can be expensive.',
+    name: 'Hauz Khas Village',
+    city: 'New Delhi',
+    data: 'Hauz Khas Village is a unique mix of historical ruins and modern urban culture. It is known for its high-end boutiques, art galleries, and a lively bar scene overlooking a lake. It is adjacent to a large deer park. Metro connectivity is good.',
     image: 'https://placehold.co/600x400.png',
-    avgRent: 3500,
-    walkScore: 97,
-    amenities: ['parks', 'nightlife', 'cafes', 'groceries']
+    avgRent: 45000,
+    walkScore: 78,
+    amenities: ['parks', 'nightlife', 'cafes', 'metro']
   },
   {
     id: 4,
-    name: 'Park Slope',
-    city: 'New York City',
-    data: 'Park Slope in Brooklyn is known for its historic brownstones, top-rated schools, and family-oriented atmosphere. It borders Prospect Park, offering vast green space. The streets are lined with trees, independent boutiques, and restaurants. It is a very safe and quiet neighborhood, making it popular with families, despite the high cost of living. Excellent subway access.',
+    name: 'Indiranagar',
+    city: 'Bengaluru',
+    data: 'Indiranagar is a posh residential and commercial locality. It is famous for its 100 Feet Road, which is packed with breweries, restaurants, and retail stores. It has excellent metro connectivity and several well-maintained parks.',
     image: 'https://placehold.co/600x400.png',
-    avgRent: 4200,
-    walkScore: 91,
-    amenities: ['parks', 'schools', 'cafes', 'groceries']
+    avgRent: 40000,
+    walkScore: 88,
+    amenities: ['parks', 'metro', 'cafes', 'nightlife', 'gyms']
   },
     {
     id: 5,
-    name: 'Wicker Park',
-    city: 'Chicago',
-    data: 'Wicker Park is a trendy neighborhood known for its eclectic arts scene, live music venues, and unique fashion boutiques. It has a lively nightlife centered around Milwaukee Avenue. The area features a mix of historic mansions and modern condos. It is highly walkable and has great access to the "L" train Blue Line. The 606 trail offers a great path for walking and biking.',
+    name: 'Powai',
+    city: 'Mumbai',
+    data: 'Centered around the scenic Powai Lake, this neighborhood is a well-planned area with a mix of residential and commercial spaces. Home to IIT Bombay, it has a youthful vibe. It offers a relatively peaceful environment with good schools and hospitals, but can be expensive.',
     image: 'https://placehold.co/600x400.png',
-    avgRent: 2800,
-    walkScore: 92,
-    amenities: ['parks', 'nightlife', 'cafes', 'gyms']
+    avgRent: 60000,
+    walkScore: 70,
+    amenities: ['parks', 'schools', 'cafes', 'gyms']
   },
   {
     id: 6,
-    name: 'Ballard',
-    city: 'Seattle',
-    data: 'Once a Scandinavian fishing village, Ballard is now a hip neighborhood with a popular farmers market, numerous craft breweries, and a vibrant main street. It maintains a sense of community while offering many modern amenities. It has some waterfront access at Golden Gardens Park. Public transit to downtown can be slow, but it is fairly walkable within the core neighborhood.',
+    name: 'Cyber Hub',
+    city: 'Gurugram',
+    data: 'Cyber Hub is a futuristic commercial and entertainment hub. While not strictly a residential area, its surroundings are full of modern apartments. It is a major destination for dining and nightlife, catering to the professionals working in the area. Excellent metro connectivity.',
     image: 'https://placehold.co/600x400.png',
-    avgRent: 2400,
-    walkScore: 88,
-    amenities: ['parks', 'cafes', 'nightlife', 'groceries']
+    avgRent: 50000,
+    walkScore: 82,
+    amenities: ['metro', 'cafes', 'nightlife', 'gyms']
   }
 ];
