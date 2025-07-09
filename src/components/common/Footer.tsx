@@ -9,22 +9,22 @@ const footerLinks = {
     { name: 'Featured Neighborhoods', href: '/#featured' },
   ],
   'Company': [
-    { name: 'About Us', href: '#' },
-    { name: 'Blog', href: '#' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Blog', href: '/blog' },
   ],
   'Support': [
     { name: 'Support Center', href: '/support' },
     { name: 'Contact Us', href: '/contact' },
   ],
   'Legal': [
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Terms of Service', href: '#' },
+    { name: 'Privacy Policy', href: '/privacy' },
+    { name: 'Terms of Service', href: '/terms' },
   ],
 };
 
 export default function Footer() {
   return (
-    <footer className="bg-secondary/30 border-t mt-16">
+    <footer className="bg-secondary/30 border-t">
       <div className="container py-12 px-4 md:px-6">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           <div className="col-span-2 md:col-span-1">

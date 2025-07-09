@@ -2,11 +2,10 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/common/Header";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Pencil, Search, CheckCircle } from "lucide-react";
+import { ArrowRight, CircleCheckBig, Pencil, Search } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Footer from "@/components/common/Footer";
 
 export default function Home() {
   return (
@@ -58,7 +57,7 @@ export default function Home() {
                     </div>
                     <div className="flex flex-col items-center p-6 animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-400">
                          <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 text-primary mb-6">
-                            <CheckCircle className="h-8 w-8" />
+                            <CircleCheckBig className="h-8 w-8" />
                         </div>
                         <h3 className="text-xl font-headline font-semibold mb-2">3. Decide with Confidence</h3>
                         <p className="text-muted-foreground">Receive detailed reports, scores, and insights to make an informed decision about your new home.</p>
@@ -186,7 +185,6 @@ export default function Home() {
             </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import Chatbot from "@/components/common/Chatbot";
 import { AuthProvider } from "@/context/AuthContext";
+import Footer from "@/components/common/Footer";
 
 export const metadata: Metadata = {
   title: "NeighborWise",
@@ -22,11 +23,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className={cn("font-body antialiased min-h-screen")}>
+      <body className={cn("font-body antialiased flex flex-col min-h-screen")}>
         <AuthProvider>
-          {children}
+          <div className="flex-1">
+            {children}
+          </div>
           <Chatbot />
           <Toaster />
+          <Footer />
         </AuthProvider>
       </body>
     </html>
