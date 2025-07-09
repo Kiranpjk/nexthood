@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
@@ -19,8 +19,10 @@ import { Loader2 } from 'lucide-react';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 
 const formSchema = z.object({
+  username: z.string().min(3, { message: 'Username must be at least 3 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
   password: z.string().min(6, { message: 'Password must be at least 6 characters.' }),
+  mobileNumber: z.string().regex(/^\d{10}$/, { message: 'Please enter a valid 10-digit mobile number.' }),
 });
 
 export default function SignUpForm() {
@@ -32,15 +34,22 @@ export default function SignUpForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      username: '',
       email: '',
       password: '',
+      mobileNumber: '',
     },
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     try {
-      await createUserWithEmailAndPassword(auth, values.email, values.password);
+      const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
+      if (userCredential.user) {
+        await updateProfile(userCredential.user, {
+          displayName: values.username,
+        });
+      }
       router.push('/dashboard');
     } catch (error: any) {
       toast({
@@ -59,7 +68,7 @@ export default function SignUpForm() {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
       router.push('/dashboard');
-    } catch (error: any) {
+    } catch (error: any) => {
       toast({
         title: 'Google Sign-In Failed',
         description: error.message || 'Could not sign in with Google.',
@@ -95,12 +104,38 @@ export default function SignUpForm() {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem>
+                  <Label htmlFor="username">Username</Label>
+                  <FormControl>
+                    <Input id="username" placeholder="Your Username" required {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
               name="email"
               render={({ field }) => (
                 <FormItem>
                   <Label htmlFor="email">Email</Label>
                   <FormControl>
                     <Input id="email" type="email" placeholder="m@example.com" required {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+             <FormField
+              control={form.control}
+              name="mobileNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <Label htmlFor="mobileNumber">Mobile Number</Label>
+                  <FormControl>
+                    <Input id="mobileNumber" placeholder="10-digit mobile number" required {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

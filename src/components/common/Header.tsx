@@ -41,21 +41,43 @@ export default function Header() {
           </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-2">
+        <nav className="hidden md:flex items-center gap-6">
            {navLinks.map(link => (
-             <Button key={link.href} variant={pathname === link.href ? "secondary" : "ghost"} asChild>
-                <Link href={link.href}>{link.label}</Link>
-             </Button>
+             <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-primary py-2",
+                  pathname === link.href
+                    ? "text-primary border-b-2 border-primary"
+                    : "text-muted-foreground"
+                )}
+              >
+                {link.label}
+              </Link>
           ))}
         </nav>
 
         {/* Auth Buttons & Mobile Menu */}
-        <div className="flex items-center gap-2">
-          <div className="hidden md:flex items-center gap-2">
+        <div className="flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-4">
             {user ? (
-              <Button variant="outline" onClick={handleLogout}>
-                Log Out
-              </Button>
+              <>
+                <Link
+                  href="/profile"
+                  className={cn(
+                    "text-sm font-medium transition-colors hover:text-primary py-2",
+                    pathname === "/profile"
+                      ? "text-primary border-b-2 border-primary"
+                      : "text-muted-foreground"
+                  )}
+                >
+                  Profile
+                </Link>
+                <Button variant="outline" onClick={handleLogout}>
+                  Log Out
+                </Button>
+              </>
             ) : (
               <>
                 <Button variant="outline" asChild>
@@ -97,9 +119,22 @@ export default function Header() {
                   ))}
                   <div className="pt-6 mt-6 border-t">
                     {user ? (
-                       <Button variant="outline" onClick={handleLogout} className="w-full">
-                          Log Out
-                       </Button>
+                       <div className="flex flex-col gap-4">
+                          <SheetClose asChild>
+                            <Link
+                              href="/profile"
+                              className={cn(
+                                "text-lg font-medium",
+                                pathname === "/profile" ? "text-primary" : "text-muted-foreground"
+                              )}
+                            >
+                              Profile
+                            </Link>
+                          </SheetClose>
+                          <Button variant="outline" onClick={handleLogout} className="w-full">
+                              Log Out
+                          </Button>
+                       </div>
                     ) : (
                       <div className="flex flex-col gap-4">
                         <SheetClose asChild>

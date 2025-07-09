@@ -9,7 +9,6 @@ import FilterPanel, { type Filters } from '@/components/dashboard/FilterPanel';
 import NeighborhoodList from '@/components/dashboard/NeighborhoodList';
 import { runEvaluation } from '@/actions/evaluateNeighborhoods';
 import type { EvaluatedNeighborhood } from '@/lib/types';
-import RentChart from '@/components/dashboard/RentChart';
 
 export default function DashboardPage() {
   const { user, loading: authLoading } = useAuth();
@@ -66,7 +65,6 @@ export default function DashboardPage() {
       <main className="flex-1 container py-8 px-4 md:px-6">
         <div className="space-y-8 animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
           <PreferenceForm onSubmit={handleEvaluation} isLoading={isLoading} />
-          <RentChart neighborhoods={filteredNeighborhoods} />
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             <div className="lg:col-span-1">
               <FilterPanel filters={filters} onFilterChange={setFilters} />
