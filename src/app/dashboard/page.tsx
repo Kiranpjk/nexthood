@@ -5,8 +5,10 @@ import Header from '@/components/common/Header';
 import PreferenceForm from '@/components/dashboard/PreferenceForm';
 import FilterPanel, { type Filters } from '@/components/dashboard/FilterPanel';
 import NeighborhoodList from '@/components/dashboard/NeighborhoodList';
+import RentChart from '@/components/dashboard/RentChart';
 import { runEvaluation } from '@/actions/evaluateNeighborhoods';
 import type { EvaluatedNeighborhood } from '@/lib/types';
+import { cn } from '@/lib/utils';
 
 export default function DashboardPage() {
   const [evaluatedNeighborhoods, setEvaluatedNeighborhoods] = React.useState<EvaluatedNeighborhood[]>([]);
@@ -18,7 +20,6 @@ export default function DashboardPage() {
   });
 
   React.useEffect(() => {
-    // Initial load of all neighborhoods without evaluation
     const initialLoad = async () => {
       setIsLoading(true);
       const result = await runEvaluation('');
@@ -48,7 +49,8 @@ export default function DashboardPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1 container py-8 px-4 md:px-6">
-        <div className="space-y-8">
+        <div className="space-y-8 animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
+          <RentChart neighborhoods={evaluatedNeighborhoods} />
           <PreferenceForm onSubmit={handleEvaluation} isLoading={isLoading} />
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-1">

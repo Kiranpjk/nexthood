@@ -54,6 +54,7 @@ export default function Chatbot() {
       const modelMessage: Message = { role: 'model', content: response };
       setMessages((prev) => [...prev, modelMessage]);
     } catch (error) {
+      console.error("Chatbot submission error:", error);
       const errorMessage: Message = {
         role: 'model',
         content: "Sorry, I couldn't get a response. Please try again.",
@@ -77,7 +78,7 @@ export default function Chatbot() {
       </div>
 
       {isOpen && (
-        <Card className="fixed bottom-24 right-6 z-50 w-full max-w-sm shadow-xl flex flex-col">
+        <Card className="fixed bottom-24 right-6 z-50 w-full max-w-sm shadow-xl flex flex-col animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="font-headline">NeighborWise Assistant</CardTitle>
             <Button variant="ghost" size="icon" onClick={handleToggle} className="h-6 w-6">

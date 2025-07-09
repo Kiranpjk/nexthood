@@ -8,10 +8,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className={cn(
+      "sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
+      "animate-in fade-in-0 duration-500"
+    )}>
       <div className="container flex h-16 items-center">
         <div className="mr-auto flex items-center gap-4">
           <Link href="/" className="flex items-center gap-2">
@@ -31,9 +35,6 @@ export default function Header() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem asChild>
-                 <Link href="/help">Help Center</Link>
-              </DropdownMenuItem>
               <DropdownMenuItem asChild>
                  <Link href="/support">Support</Link>
               </DropdownMenuItem>

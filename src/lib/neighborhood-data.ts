@@ -62,5 +62,45 @@ export const neighborhoods: Neighborhood[] = [
     avgRent: 50000,
     walkScore: 82,
     amenities: ['metro', 'cafes', 'nightlife', 'gyms']
+  },
+  {
+    id: 7,
+    name: 'Adyar',
+    city: 'Chennai',
+    data: 'Adyar is a large, leafy neighborhood known for its tranquil atmosphere, good schools, and proximity to Elliot\'s Beach. It is one of the greenest areas in Chennai, with the Adyar River and Theosophical Society gardens nearby.',
+    image: 'https://placehold.co/600x400.png',
+    avgRent: 28000,
+    walkScore: 75,
+    amenities: ['parks', 'schools', 'markets', 'cafes']
+  },
+  {
+    id: 8,
+    name: 'Koregaon Park',
+    city: 'Pune',
+    data: 'Known as KP, this is one of Pune\'s most prestigious and cosmopolitan areas. It\'s famous for its lush greenery, upscale restaurants, pubs, and the Osho International Meditation Resort. It has a relaxed yet vibrant atmosphere.',
+    image: 'https://placehold.co/600x400.png',
+    avgRent: 42000,
+    walkScore: 85,
+    amenities: ['parks', 'nightlife', 'cafes', 'gyms']
+  },
+  {
+    id: 9,
+    name: 'Jubilee Hills',
+    city: 'Hyderabad',
+    data: 'Jubilee Hills is one of India\'s most affluent residential and commercial localities. It is home to many Tollywood celebrities and has numerous high-end boutiques, restaurants, and cafes. It is also known for KBR National Park.',
+    image: 'https://placehold.co/600x400.png',
+    avgRent: 55000,
+    walkScore: 68,
+    amenities: ['parks', 'nightlife', 'cafes', 'markets']
+  },
+  {
+    id: 10,
+    name: 'Salt Lake',
+    city: 'Kolkata',
+    data: 'Also known as Bidhannagar, Salt Lake is a well-planned satellite township. It\'s a major IT and commercial hub with wide roads, green spaces, and a large central park. It\'s quieter than central Kolkata and offers good metro connectivity.',
+    image: 'https://placehold.co/600x400.png',
+    avgRent: 22000,
+    walkScore: 72,
+    amenities: ['parks', 'metro', 'markets', 'schools']
   }
 ];

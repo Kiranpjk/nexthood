@@ -8,7 +8,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1 flex items-center justify-center">
-        <div className="container px-4 md:px-6 text-center">
+        <div className="container px-4 md:px-6 text-center animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
           <div className="max-w-3xl mx-auto space-y-6">
             <h1 className="text-4xl font-headline font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
               Find Your Perfect Neighborhood
