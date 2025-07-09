@@ -2,7 +2,7 @@
 'use client';
 
 import * as React from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import Header from '@/components/common/Header';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -29,6 +29,7 @@ const profileSchema = z.object({
 export default function ProfilePage() {
   const { user, loading } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
   const { toast } = useToast();
   const [isSaving, setIsSaving] = React.useState(false);
   const [isGenerating, setIsGenerating] = React.useState(false);
@@ -43,12 +44,13 @@ export default function ProfilePage() {
 
   React.useEffect(() => {
     if (!loading && !user) {
+      sessionStorage.setItem('redirectAfterLogin', pathname);
       router.push('/login');
     }
     if (user) {
         form.reset({ displayName: user.displayName || '' });
     }
-  }, [user, loading, router, form]);
+  }, [user, loading, router, form, pathname]);
   
   const handleGenerateAvatar = async () => {
     if (!user) return;

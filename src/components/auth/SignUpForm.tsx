@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile, getAdditionalUserInfo } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
@@ -50,7 +50,8 @@ export default function SignUpForm() {
           displayName: values.username,
         });
       }
-      router.push('/dashboard');
+      // New user signup always goes to onboarding
+      router.push('/onboarding');
     } catch (error: any) {
       toast({
         title: 'Sign Up Failed',
@@ -66,8 +67,16 @@ export default function SignUpForm() {
     setIsGoogleLoading(true);
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-      router.push('/dashboard');
+      const result = await signInWithPopup(auth, provider);
+      const additionalInfo = getAdditionalUserInfo(result);
+      
+      if (additionalInfo?.isNewUser) {
+        router.push('/onboarding');
+      } else {
+        const redirectPath = sessionStorage.getItem('redirectAfterLogin');
+        sessionStorage.removeItem('redirectAfterLogin');
+        router.push(redirectPath || '/dashboard');
+      }
     } catch (error: any) {
       toast({
         title: 'Google Sign-In Failed',

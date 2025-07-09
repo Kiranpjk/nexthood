@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import Header from '@/components/common/Header';
 import PreferenceForm from '@/components/dashboard/PreferenceForm';
@@ -13,6 +13,7 @@ import type { EvaluatedNeighborhood } from '@/lib/types';
 export default function DashboardPage() {
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
   const [evaluatedNeighborhoods, setEvaluatedNeighborhoods] = React.useState<EvaluatedNeighborhood[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [filters, setFilters] = React.useState<Filters>({
@@ -23,9 +24,10 @@ export default function DashboardPage() {
   
   React.useEffect(() => {
     if (!authLoading && !user) {
+      sessionStorage.setItem('redirectAfterLogin', pathname);
       router.push('/login');
     }
-  }, [user, authLoading, router]);
+  }, [user, authLoading, router, pathname]);
 
   React.useEffect(() => {
     if (user) {
