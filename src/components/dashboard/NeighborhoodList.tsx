@@ -1,28 +1,17 @@
-import { Skeleton } from '@/components/ui/skeleton';
 import { EvaluatedNeighborhood } from '@/lib/types';
 import NeighborhoodCard from './NeighborhoodCard';
+import LoadingAnimation from '@/components/common/LoadingAnimation';
 
 interface NeighborhoodListProps {
   neighborhoods: EvaluatedNeighborhood[];
   isLoading: boolean;
 }
 
-const SkeletonCard = () => (
-  <div className="space-y-4">
-    <Skeleton className="h-48 w-full" />
-    <div className="px-1 space-y-2">
-      <Skeleton className="h-6 w-2/3" />
-      <Skeleton className="h-4 w-1/3" />
-      <Skeleton className="h-12 w-full" />
-    </div>
-  </div>
-);
-
 export default function NeighborhoodList({ neighborhoods, isLoading }: NeighborhoodListProps) {
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-        {[...Array(4)].map((_, i) => <SkeletonCard key={i} />)}
+      <div className="flex items-center justify-center rounded-lg border-2 border-dashed min-h-[50vh]">
+        <LoadingAnimation text="Finding your perfect match..." />
       </div>
     );
   }
