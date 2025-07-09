@@ -38,9 +38,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
            <Card className="max-w-2xl w-full shadow-lg">
               <CardHeader>
                 <div className="mx-auto pb-4"><Logo /></div>
-                <CardTitle className="text-2xl font-headline">Firebase Not Configured</CardTitle>
+                <CardTitle className="text-2xl font-headline">Firebase Configuration Incomplete</CardTitle>
                 <CardDescription>
-                  Your Firebase credentials are not set up correctly. Please follow the instructions below to configure your project.
+                  Your Firebase credentials are not fully set up. Please follow the instructions below to configure your project.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4 text-sm text-left">
@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                     <li>Find and copy the `firebaseConfig` object values into your <code className="bg-muted px-1 py-0.5 rounded text-foreground">.env</code> file at the root of your project.</li>
                     <li><strong>Important:</strong> You must restart your development server after updating the <code className="bg-muted px-1 py-0.5 rounded text-foreground">.env</code> file.</li>
                 </ol>
-                 <p className="font-semibold pt-2">Your <code className="bg-muted px-1 py-0.5 rounded text-foreground">.env</code> file should look like this:</p>
+                 <p className="font-semibold pt-2">Ensure all the following variables are present and correct in your <code className="bg-muted px-1 py-0.5 rounded text-foreground">.env</code> file:</p>
                  <pre className="bg-muted p-4 rounded-md text-xs overflow-x-auto text-muted-foreground">
 {`NEXT_PUBLIC_FIREBASE_API_KEY="YOUR_API_KEY"
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN="YOUR_AUTH_DOMAIN"

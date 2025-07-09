@@ -10,8 +10,14 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// We need to check if the essential keys are provided to avoid Firebase errors.
-const isFirebaseConfigured = !!firebaseConfig.apiKey && !!firebaseConfig.projectId;
+// We need to check if all the essential keys are provided to avoid Firebase errors.
+const isFirebaseConfigured =
+  !!firebaseConfig.apiKey &&
+  !!firebaseConfig.authDomain &&
+  !!firebaseConfig.projectId &&
+  !!firebaseConfig.storageBucket &&
+  !!firebaseConfig.messagingSenderId &&
+  !!firebaseConfig.appId;
 
 const app = isFirebaseConfigured
   ? getApps().length
