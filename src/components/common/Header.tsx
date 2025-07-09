@@ -10,6 +10,7 @@ import { signOut } from "firebase/auth";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -29,27 +30,36 @@ export default function Header() {
     router.push('/');
   };
 
+  const getInitials = (name?: string | null) => {
+    if (!name) return 'U';
+    return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+  };
+
+
   return (
     <header className={cn(
       "sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
       "animate-in fade-in-0 duration-500"
     )}>
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-16 items-center">
         
-          <Link href="/" className="flex items-center gap-2">
-            <Logo />
-          </Link>
+          <div className="mr-4 flex items-center">
+            <Link href="/" className="flex items-center gap-2">
+              <Logo />
+            </Link>
+          </div>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-6 flex-1 justify-center">
            {navLinks.map(link => (
              <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary py-2",
+                  "text-sm font-medium transition-colors hover:text-primary relative py-2",
+                  "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-in-out hover:after:scale-x-100",
                   pathname === link.href
-                    ? "text-primary border-b-2 border-primary"
+                    ? "text-primary after:scale-x-100"
                     : "text-muted-foreground"
                 )}
               >
@@ -59,21 +69,18 @@ export default function Header() {
         </nav>
 
         {/* Auth Buttons & Mobile Menu */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 ml-auto">
           <div className="hidden md:flex items-center gap-4">
             {user ? (
               <>
-                <Link
-                  href="/profile"
-                  className={cn(
-                    "text-sm font-medium transition-colors hover:text-primary py-2",
-                    pathname === "/profile"
-                      ? "text-primary border-b-2 border-primary"
-                      : "text-muted-foreground"
-                  )}
-                >
-                  Profile
-                </Link>
+                 <Button variant="ghost" asChild className="p-0 h-10 w-10 rounded-full">
+                  <Link href="/profile" className="rounded-full">
+                    <Avatar className="h-9 w-9">
+                      <AvatarImage src={user.photoURL || ''} alt={user.displayName || 'User'}/>
+                      <AvatarFallback>{getInitials(user.displayName)}</AvatarFallback>
+                    </Avatar>
+                  </Link>
+                </Button>
                 <Button variant="outline" onClick={handleLogout}>
                   Log Out
                 </Button>
@@ -121,15 +128,15 @@ export default function Header() {
                     {user ? (
                        <div className="flex flex-col gap-4">
                           <SheetClose asChild>
-                            <Link
-                              href="/profile"
-                              className={cn(
-                                "text-lg font-medium",
-                                pathname === "/profile" ? "text-primary" : "text-muted-foreground"
-                              )}
-                            >
-                              Profile
-                            </Link>
+                              <Link href="/profile" className="flex items-center gap-4">
+                                  <Avatar className="h-9 w-9">
+                                    <AvatarImage src={user.photoURL || ''} alt={user.displayName || 'User'}/>
+                                    <AvatarFallback>{getInitials(user.displayName)}</AvatarFallback>
+                                  </Avatar>
+                                  <span className={cn("text-lg font-medium", pathname === "/profile" ? "text-primary" : "text-muted-foreground")}>
+                                      Profile
+                                  </span>
+                              </Link>
                           </SheetClose>
                           <Button variant="outline" onClick={handleLogout} className="w-full">
                               Log Out
