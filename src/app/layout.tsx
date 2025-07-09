@@ -3,6 +3,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import Chatbot from "@/components/common/Chatbot";
+import { AuthProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
   title: "NeighborWise",
@@ -22,9 +23,11 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className={cn("font-body antialiased min-h-screen")}>
-        {children}
-        <Chatbot />
-        <Toaster />
+        <AuthProvider>
+          {children}
+          <Chatbot />
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );
