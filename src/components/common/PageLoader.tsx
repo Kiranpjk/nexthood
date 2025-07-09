@@ -1,3 +1,4 @@
+
 'use client';
 
 import * as React from 'react';
@@ -46,13 +47,13 @@ export function PageLoader() {
       const currentPath = window.location.pathname + window.location.search;
 
       if (newPath && newPath !== currentPath) {
-        start();
+        requestAnimationFrame(start);
       }
       return originalPushState.apply(this, args);
     };
 
     const handlePopState = () => {
-        start();
+        requestAnimationFrame(start);
     };
 
     window.addEventListener('popstate', handlePopState);
