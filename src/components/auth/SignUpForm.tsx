@@ -17,8 +17,7 @@ import Link from 'next/link';
 import GoogleIcon from '../icons/GoogleIcon';
 import { Loader2 } from 'lucide-react';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
-import { Label } from "@/components/ui/label";
-import { Label } from "@radix-ui/react-label";
+
 
 const formSchema = z.object({
   username: z.string().min(3, { message: 'Username must be at least 3 characters.' }),
