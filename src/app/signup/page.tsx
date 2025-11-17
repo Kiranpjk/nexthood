@@ -1,5 +1,6 @@
 import Header from "@/components/common/Header";
 import SignUpForm from "@/components/auth/SignUpForm";
+import { Label } from "@/components/ui/label";
 
 export default function SignUpPage() {
   return (
