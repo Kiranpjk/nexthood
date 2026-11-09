@@ -62,7 +62,7 @@ export default function ProfilePage() {
             title: 'Avatar Generated!',
             description: 'Your new AI-powered avatar has been set.',
         });
-        await auth.currentUser?.reload();
+        await auth?.currentUser?.reload();
         router.refresh(); 
     } catch (error: any) {
         toast({

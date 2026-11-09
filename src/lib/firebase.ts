@@ -27,4 +27,13 @@ const app = isFirebaseConfigured
 
 const auth = app ? getAuth(app) : null;
 
-export { app, auth, isFirebaseConfigured };
+// Use this where sign-in is about to happen: it fails with a message the forms can show,
+// in place of a crash inside the Firebase SDK when the keys are missing.
+function requireAuth() {
+  if (!auth) {
+    throw new Error('Sign-in is not set up: the Firebase keys are missing. See .env.example.');
+  }
+  return auth;
+}
+
+export { app, auth, isFirebaseConfigured, requireAuth };
