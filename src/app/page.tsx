@@ -95,7 +95,7 @@ export default function Home() {
             </div>
 
             {/* Example result, drawn in markup so it never depends on a photo */}
-            <figure className="relative mx-auto w-full max-w-md lg:max-w-none" aria-label="Example match result">
+            <figure className="relative isolate mx-auto w-full max-w-md lg:max-w-none" aria-label="Example match result">
               <div className="absolute -inset-4 -z-10 rounded-[1.75rem] bg-secondary md:-inset-6" aria-hidden="true" />
               <div className="overflow-hidden rounded-xl border bg-card shadow-raised">
                 <NeighborhoodTile name={example.name} city={example.city} className="h-44 md:h-52" />
