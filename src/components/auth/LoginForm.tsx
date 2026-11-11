@@ -82,23 +82,23 @@ export default function LoginForm() {
   };
 
   return (
-    <Card className="w-full max-w-md shadow-lg">
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl font-headline">Welcome Back</CardTitle>
-        <CardDescription>Sign in to your NextHood account</CardDescription>
+    <Card className="w-full max-w-md border-0 bg-transparent shadow-none">
+      <CardHeader className="px-0 pt-0">
+        <CardTitle><h1 className="text-title font-bold">Log in</h1></CardTitle>
+        <CardDescription className="text-base">Welcome back to NextHood.</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <Button variant="outline" className="w-full" onClick={handleGoogleSignIn} disabled={isLoading || isGoogleLoading}>
+      <CardContent className="space-y-5 px-0">
+        <Button variant="outline" className="h-11 w-full" onClick={handleGoogleSignIn} disabled={isLoading || isGoogleLoading}>
           {isGoogleLoading ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <GoogleIcon className="mr-2 h-5 w-5" />}
-          Sign in with Google
+          Continue with Google
         </Button>
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
             <Separator />
           </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-card px-2 text-muted-foreground">
-              Or continue with
+          <div className="relative flex justify-center text-sm">
+            <span className="bg-background px-3 text-muted-foreground">
+              or with email
             </span>
           </div>
         </div>
@@ -111,7 +111,7 @@ export default function LoginForm() {
                 <FormItem>
                   <Label htmlFor="email">Email</Label>
                   <FormControl>
-                    <Input id="email" type="email" placeholder="m@example.com" {...field} />
+                    <Input id="email" type="email" placeholder="you@example.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -130,17 +130,17 @@ export default function LoginForm() {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full" disabled={isLoading || isGoogleLoading}>
+            <Button type="submit" className="h-11 w-full" disabled={isLoading || isGoogleLoading}>
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Sign In
+              Log in
             </Button>
           </form>
         </Form>
       </CardContent>
-      <CardFooter className="flex flex-col gap-4">
-        <div className="text-center text-sm">
+      <CardFooter className="flex flex-col items-start gap-4 px-0">
+        <div className="text-sm text-muted-foreground">
           Don't have an account?{" "}
-          <Button variant="link" asChild className="p-0">
+          <Button variant="link" asChild className="h-auto p-0">
             <Link href="/signup">Sign up</Link>
           </Button>
         </div>
