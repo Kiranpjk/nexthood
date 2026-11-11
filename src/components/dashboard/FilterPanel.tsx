@@ -66,9 +66,9 @@ export default function FilterPanel({ filters, onFilterChange }: FilterPanelProp
         </div>
         <div className="space-y-4">
           <p className="text-sm font-medium" id="amenities-label">Amenities</p>
-          <div className="space-y-3" role="group" aria-labelledby="amenities-label">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-1" role="group" aria-labelledby="amenities-label">
             {AMENITIES.map(amenity => (
-              <div key={amenity} className="flex items-center space-x-3">
+              <div key={amenity} className="flex min-h-6 items-center space-x-3">
                 <Checkbox 
                   id={amenity} 
                   checked={filters.amenities.includes(amenity)}
