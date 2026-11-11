@@ -10,9 +10,20 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['"Playfair Display"', 'serif'],
+        body: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        headline: ['var(--font-display)', 'system-ui', 'sans-serif'],
         code: ['monospace'],
+      },
+      fontSize: {
+        // Type scale (ratio ~1.25, display steps up harder): body 16, lead 18-20, h3 20-24, h2 30-40, display 40-76.
+        lead: ['clamp(1.0625rem, 0.95rem + 0.4vw, 1.25rem)', { lineHeight: '1.6' }],
+        'title-sm': ['clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem)', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
+        title: ['clamp(1.875rem, 1.5rem + 1.4vw, 2.5rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        display: ['clamp(2.5rem, 1.6rem + 3.8vw, 4.75rem)', { lineHeight: '1.02', letterSpacing: '-0.035em' }],
+      },
+      boxShadow: {
+        // One restrained elevation for raised surfaces; hover lifts use the same tint.
+        raised: '0 1px 2px hsl(232 28% 16% / 0.06), 0 8px 24px -12px hsl(232 28% 16% / 0.18)',
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -32,6 +43,11 @@ export default {
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
+          strong: 'hsl(var(--secondary-strong))',
+        },
+        highlight: {
+          DEFAULT: 'hsl(var(--highlight))',
+          foreground: 'hsl(var(--highlight-foreground))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
