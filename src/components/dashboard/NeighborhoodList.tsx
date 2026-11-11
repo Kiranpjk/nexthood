@@ -10,23 +10,23 @@ interface NeighborhoodListProps {
 export default function NeighborhoodList({ neighborhoods, isLoading }: NeighborhoodListProps) {
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center rounded-lg border-2 border-dashed min-h-[50vh]">
-        <LoadingAnimation text="Finding your perfect match..." />
+      <div className="flex min-h-[50vh] items-center justify-center rounded-xl border bg-card" role="status">
+        <LoadingAnimation text="Scoring neighborhoods" />
       </div>
     );
   }
 
   if (neighborhoods.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center text-center p-8 border-2 border-dashed rounded-lg h-64">
-        <h3 className="text-xl font-semibold font-headline">No Matches Found</h3>
-        <p className="text-muted-foreground mt-2">Try adjusting your filters or changing your lifestyle preferences.</p>
+      <div className="flex h-64 flex-col items-start justify-center rounded-xl border bg-card p-8">
+        <h3 className="text-xl font-bold">Nothing fits those filters</h3>
+        <p className="mt-2 max-w-md text-muted-foreground">Raise the rent limit, lower the walk score or drop an amenity to see more neighborhoods.</p>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
       {neighborhoods.map((n) => (
         <NeighborhoodCard key={n.id} neighborhood={n} />
       ))}

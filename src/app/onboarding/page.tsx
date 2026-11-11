@@ -29,7 +29,7 @@ export default function OnboardingPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 flex items-center justify-center p-4 py-12">
+      <main className="flex-1 flex justify-center px-4 py-12 md:py-16">
         <OnboardingForm />
       </main>
     </div>

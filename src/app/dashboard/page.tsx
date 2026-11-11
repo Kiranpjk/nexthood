@@ -46,14 +46,22 @@ export default function DashboardPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 container py-8 px-4 md:px-6">
-        <div className="space-y-8 animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
+      <main className="flex-1 container py-8 px-4 md:px-6 md:py-12">
+        <div className="space-y-12">
           <PreferenceForm onSubmit={handleEvaluation} isLoading={isLoading} />
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-4 lg:gap-12">
             <div className="lg:col-span-1">
               <FilterPanel filters={filters} onFilterChange={setFilters} />
             </div>
             <div className="lg:col-span-3">
+              <p className="mb-4 text-sm text-muted-foreground" aria-live="polite">
+                {isLoading
+                  ? 'Scoring…'
+                  : `${filteredNeighborhoods.length} of ${evaluatedNeighborhoods.length} neighborhoods`}
+                {!isLoading && evaluatedNeighborhoods.length > 0 && evaluatedNeighborhoods.every((n) => n.matchScore === 0) && (
+                  <span className="text-foreground"> · {evaluatedNeighborhoods[0].explanation}</span>
+                )}
+              </p>
               <NeighborhoodList neighborhoods={filteredNeighborhoods} isLoading={isLoading} />
             </div>
           </div>

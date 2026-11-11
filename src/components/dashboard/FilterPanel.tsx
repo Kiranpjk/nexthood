@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -35,15 +34,12 @@ export default function FilterPanel({ filters, onFilterChange }: FilterPanelProp
   };
 
   return (
-    <Card className="sticky top-24 shadow-md">
-      <CardHeader>
-        <CardTitle className="font-headline text-xl">Filter & Refine</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-6">
+    <section className="space-y-8 lg:sticky lg:top-24" aria-labelledby="filters-heading">
+      <h2 id="filters-heading" className="text-xl font-bold">Narrow it down</h2>
         <div className="space-y-4">
           <div className="flex justify-between">
-            <Label htmlFor="max-rent">Max Rent</Label>
-            <span className="text-sm font-medium text-primary">₹{filters.maxRent.toLocaleString()}</span>
+            <Label htmlFor="max-rent">Max rent</Label>
+            <span className="text-sm font-semibold tabular-nums text-primary">₹{filters.maxRent.toLocaleString('en-IN')}</span>
           </div>
           <Slider
             id="max-rent"
@@ -56,8 +52,8 @@ export default function FilterPanel({ filters, onFilterChange }: FilterPanelProp
         </div>
         <div className="space-y-4">
           <div className="flex justify-between">
-            <Label htmlFor="min-walk-score">Min Walk Score</Label>
-             <span className="text-sm font-medium text-primary">{filters.minWalkScore}</span>
+            <Label htmlFor="min-walk-score">Min walk score</Label>
+             <span className="text-sm font-semibold tabular-nums text-primary">{filters.minWalkScore}</span>
           </div>
           <Slider
             id="min-walk-score"
@@ -69,10 +65,10 @@ export default function FilterPanel({ filters, onFilterChange }: FilterPanelProp
           />
         </div>
         <div className="space-y-4">
-          <Label>Amenities</Label>
-          <div className="space-y-2">
+          <p className="text-sm font-medium" id="amenities-label">Amenities</p>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-1" role="group" aria-labelledby="amenities-label">
             {AMENITIES.map(amenity => (
-              <div key={amenity} className="flex items-center space-x-2">
+              <div key={amenity} className="flex min-h-6 items-center space-x-3">
                 <Checkbox 
                   id={amenity} 
                   checked={filters.amenities.includes(amenity)}
@@ -83,7 +79,6 @@ export default function FilterPanel({ filters, onFilterChange }: FilterPanelProp
             ))}
           </div>
         </div>
-      </CardContent>
-    </Card>
+    </section>
   );
 }

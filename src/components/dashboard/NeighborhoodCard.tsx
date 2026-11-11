@@ -1,71 +1,78 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { EvaluatedNeighborhood } from '@/lib/types';
-import { DollarSign, School, Footprints } from 'lucide-react';
+import NeighborhoodTile from '@/components/common/NeighborhoodTile';
 
 interface NeighborhoodCardProps {
   neighborhood: EvaluatedNeighborhood;
 }
 
 export default function NeighborhoodCard({ neighborhood }: NeighborhoodCardProps) {
+  const scored = neighborhood.matchScore > 0;
+
   return (
-    <Link href={`/neighborhood/${neighborhood.id}`} className="block">
-      <Card className="h-full overflow-hidden shadow-lg transition-transform hover:scale-[1.02] duration-300">
-        <CardHeader className="p-0">
-          <div className="relative h-48 w-full">
-            <Image
-              src={neighborhood.image}
-              alt={`Image of ${neighborhood.name}`}
-              fill
-              className="object-cover"
-              data-ai-hint={neighborhood.name.toLowerCase().split(' ').join(' ')}
-            />
-          </div>
-          <div className="p-6">
-            <CardTitle className="text-2xl font-headline">{neighborhood.name}</CardTitle>
-            <CardDescription>{neighborhood.city}</CardDescription>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-4 px-6">
+    <Link
+      href={`/neighborhood/${neighborhood.id}`}
+      className="group flex h-full flex-col overflow-hidden rounded-xl border bg-card shadow-sm transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    >
+      <NeighborhoodTile name={neighborhood.name} city={neighborhood.city} className="h-36" />
+      <div className="flex flex-1 flex-col p-6">
+        <div className="flex items-start justify-between gap-4">
           <div>
-            <div className="flex justify-between items-center mb-1">
-              <span className="text-sm font-semibold">Lifestyle Match</span>
-              <span className="font-bold text-lg text-primary">{neighborhood.matchScore}%</span>
-            </div>
-            <Progress value={neighborhood.matchScore} className="h-2" />
+            <h3 className="text-title-sm font-bold group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4">
+              {neighborhood.name}
+            </h3>
+            <p className="text-sm text-muted-foreground">{neighborhood.city}</p>
           </div>
-          <p className="text-sm text-muted-foreground italic">
-            "{neighborhood.explanation}"
-          </p>
-          <div className="grid grid-cols-3 gap-4 text-center pt-2">
-            <div className="flex flex-col items-center gap-1">
-              <DollarSign className="h-6 w-6 text-accent" />
-              <span className="text-sm text-muted-foreground">Avg. Rent</span>
-              <span className="font-semibold">₹{neighborhood.avgRent.toLocaleString()}</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <Footprints className="h-6 w-6 text-accent" />
-              <span className="text-sm text-muted-foreground">Walk Score</span>
-              <span className="font-semibold">{neighborhood.walkScore}/100</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <School className="h-6 w-6 text-accent" />
-              <span className="text-sm text-muted-foreground">Schools</span>
-              <span className="font-semibold">{neighborhood.amenities.includes('schools') ? 'Good' : 'N/A'}</span>
-            </div>
+          {scored && (
+            <p className="text-right">
+              <span className="block font-headline text-3xl font-bold leading-none text-primary tabular-nums">
+                {neighborhood.matchScore}%
+              </span>
+              <span className="text-xs text-muted-foreground">match</span>
+            </p>
+          )}
+        </div>
+
+        {scored && (
+          <Progress
+            value={neighborhood.matchScore}
+            className="mt-4 h-1.5 bg-muted"
+            aria-label={`Lifestyle match ${neighborhood.matchScore}%`}
+          />
+        )}
+
+        {/* Unscored cards would all repeat the same hint; the dashboard shows it once instead. */}
+        {scored ? (
+          <p className="mt-4 flex-1 text-sm leading-relaxed text-foreground">{neighborhood.explanation}</p>
+        ) : (
+          <div className="flex-1" />
+        )}
+
+        <dl className="mt-5 grid grid-cols-3 gap-4 border-t pt-4 text-sm">
+          <div>
+            <dt className="text-muted-foreground">Avg. rent</dt>
+            <dd className="font-semibold tabular-nums">₹{neighborhood.avgRent.toLocaleString('en-IN')}</dd>
           </div>
-        </CardContent>
-        <CardFooter className="px-6 pb-6">
-          <div className="flex flex-wrap gap-2">
-            {neighborhood.amenities.map((amenity) => (
-              <Badge key={amenity} variant="secondary" className="capitalize">{amenity}</Badge>
-            ))}
+          <div>
+            <dt className="text-muted-foreground">Walk score</dt>
+            <dd className="font-semibold tabular-nums">{neighborhood.walkScore}/100</dd>
           </div>
-        </CardFooter>
-      </Card>
+          <div>
+            <dt className="text-muted-foreground">Schools</dt>
+            <dd className="font-semibold">{neighborhood.amenities.includes('schools') ? 'Good' : 'Not listed'}</dd>
+          </div>
+        </dl>
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          {neighborhood.amenities.map((amenity) => (
+            <Badge key={amenity} variant="secondary" className="capitalize">
+              {amenity}
+            </Badge>
+          ))}
+        </div>
+      </div>
     </Link>
   );
 }

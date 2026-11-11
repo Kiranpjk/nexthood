@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Logo from '@/components/ui/logo';
-import { cn } from '@/lib/utils';
 
 const footerLinks = {
   'Explore': [
@@ -24,20 +23,22 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-secondary/30 border-t">
-      <div className="container py-12 px-4 md:px-6">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-          <div className="col-span-2 md:col-span-1">
+    <footer className="bg-secondary">
+      <div className="container py-16 px-4 md:px-6">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-10">
+          <div className="col-span-2">
             <Logo />
-             <p className="text-sm text-muted-foreground mt-4">Find your perfect neighborhood with AI.</p>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-foreground/80">
+              A neighborhood finder for people moving to a new city in India.
+            </p>
           </div>
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title} className="space-y-4">
-              <h4 className="font-semibold text-foreground">{title}</h4>
-              <ul className="space-y-2">
+              <h2 className="font-body text-sm font-semibold tracking-normal text-foreground">{title}</h2>
+              <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    <Link href={link.href} className="text-sm text-foreground/80 underline-offset-4 transition-colors hover:text-primary hover:underline">
                       {link.name}
                     </Link>
                   </li>
@@ -46,9 +47,9 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground text-center md:text-left">
-            © {new Date().getFullYear()} NextHood. All Rights Reserved.
+        <div className="mt-12 flex flex-col justify-between gap-4 border-t border-secondary-strong pt-8 md:flex-row">
+          <p className="text-sm text-foreground/80">
+            © {new Date().getFullYear()} NextHood
           </p>
         </div>
       </div>

@@ -1,13 +1,13 @@
-import Header from "@/components/common/Header";
 import LoginForm from "@/components/auth/LoginForm";
+import AuthLayout from "@/components/auth/AuthLayout";
 
 export default function LoginPage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-1 flex items-center justify-center p-4">
-        <LoginForm />
-      </main>
-    </div>
+    <AuthLayout
+      heading="Pick up where you left off."
+      body="Your preferences and shortlist are waiting. Log in to keep comparing neighborhoods."
+    >
+      <LoginForm />
+    </AuthLayout>
   );
 }

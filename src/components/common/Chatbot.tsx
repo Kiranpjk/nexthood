@@ -67,21 +67,23 @@ export default function Chatbot() {
 
   return (
     <>
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-5 right-5 z-50">
         <Button
           onClick={handleToggle}
           size="icon"
-          className="rounded-full w-16 h-16 shadow-lg"
+          aria-label={isOpen ? 'Close assistant' : 'Ask the NextHood assistant'}
+          aria-expanded={isOpen}
+          className="h-14 w-14 rounded-full shadow-raised [&_svg]:size-6"
         >
-          {isOpen ? <X className="h-8 w-8" /> : <MessageSquare className="h-8 w-8" />}
+          {isOpen ? <X /> : <MessageSquare />}
         </Button>
       </div>
 
       {isOpen && (
-        <Card className="fixed bottom-24 right-6 z-50 w-full max-w-sm shadow-xl flex flex-col animate-in fade-in-0 slide-in-from-bottom-4 duration-500">
+        <Card className="fixed bottom-24 left-4 right-4 z-50 flex flex-col shadow-raised motion-safe:animate-in motion-safe:fade-in-50 motion-safe:slide-in-from-bottom-2 motion-safe:duration-200 sm:left-auto sm:right-5 sm:w-96">
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle className="font-headline">NextHood Assistant</CardTitle>
-            <Button variant="ghost" size="icon" onClick={handleToggle} className="h-6 w-6">
+            <CardTitle className="font-headline text-lg text-primary">Ask about a neighborhood</CardTitle>
+            <Button variant="ghost" size="icon" onClick={handleToggle} aria-label="Close assistant" className="h-9 w-9">
                 <X className="h-4 w-4" />
             </Button>
           </CardHeader>
@@ -121,10 +123,11 @@ export default function Chatbot() {
               <Input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Ask me anything..."
+                placeholder="Is Powai good for a family?"
+                aria-label="Message"
                 disabled={isLoading}
               />
-              <Button type="submit" size="icon" disabled={isLoading}>
+              <Button type="submit" size="icon" disabled={isLoading} aria-label="Send message">
                 <Send className="h-4 w-4" />
               </Button>
             </form>

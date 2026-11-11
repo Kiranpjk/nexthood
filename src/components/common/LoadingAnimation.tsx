@@ -8,6 +8,7 @@ const LoadingAnimation = ({ text = "Analyzing..." }: { text?: string }) => {
 
   useEffect(() => {
     if (!animationRef.current) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const animation = anime.timeline({
       loop: true,
@@ -28,12 +29,12 @@ const LoadingAnimation = ({ text = "Analyzing..." }: { text?: string }) => {
 
   return (
     <div className="flex flex-col items-center justify-center gap-6 py-8">
-      <div ref={animationRef} className="grid grid-cols-5 gap-1 h-24 w-24">
+      <div ref={animationRef} className="grid grid-cols-5 gap-1 h-24 w-24" aria-hidden="true">
         {Array.from({ length: 25 }).map((_, i) => (
           <div key={i} className="loading-bar bg-primary rounded-sm" style={{ transformOrigin: 'bottom' }} />
         ))}
       </div>
-      <p className="text-lg font-semibold text-primary animate-pulse">{text}</p>
+      <p className="text-lg font-semibold text-primary motion-safe:animate-pulse">{text}</p>
     </div>
   );
 };
