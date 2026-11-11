@@ -43,7 +43,12 @@ export default function NeighborhoodCard({ neighborhood }: NeighborhoodCardProps
           />
         )}
 
-        <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">{neighborhood.explanation}</p>
+        {/* Unscored cards would all repeat the same hint; the dashboard shows it once instead. */}
+        {scored ? (
+          <p className="mt-4 flex-1 text-sm leading-relaxed text-foreground">{neighborhood.explanation}</p>
+        ) : (
+          <div className="flex-1" />
+        )}
 
         <dl className="mt-5 grid grid-cols-3 gap-4 border-t pt-4 text-sm">
           <div>

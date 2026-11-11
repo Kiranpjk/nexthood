@@ -55,7 +55,12 @@ export default function DashboardPage() {
             </div>
             <div className="lg:col-span-3">
               <p className="mb-4 text-sm text-muted-foreground" aria-live="polite">
-                {isLoading ? 'Scoring…' : `${filteredNeighborhoods.length} of ${evaluatedNeighborhoods.length} neighborhoods`}
+                {isLoading
+                  ? 'Scoring…'
+                  : `${filteredNeighborhoods.length} of ${evaluatedNeighborhoods.length} neighborhoods`}
+                {!isLoading && evaluatedNeighborhoods.length > 0 && evaluatedNeighborhoods.every((n) => n.matchScore === 0) && (
+                  <span className="text-foreground"> · {evaluatedNeighborhoods[0].explanation}</span>
+                )}
               </p>
               <NeighborhoodList neighborhoods={filteredNeighborhoods} isLoading={isLoading} />
             </div>
