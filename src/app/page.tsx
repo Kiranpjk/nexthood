@@ -39,23 +39,6 @@ const featured = [
   },
 ];
 
-const quotes = [
-  {
-    quote:
-      "We had a week to pick an area in Bengaluru. NextHood pointed us to Indiranagar, which we would never have found on our own.",
-    name: "Riya Sharma",
-    note: "Moved to Bengaluru",
-    initials: "RS",
-  },
-  {
-    quote:
-      "Mumbai was overwhelming from the outside. The reports told me what each area is actually like to live in, not just the rent.",
-    name: "Amit Kumar",
-    note: "Relocated to Mumbai",
-    initials: "AK",
-  },
-];
-
 const cityCount = new Set(neighborhoods.map((n) => n.city)).size;
 
 export default function Home() {
@@ -188,31 +171,6 @@ export default function Home() {
                   </Link>
                 );
               })}
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials */}
-        <section id="testimonials" className="py-20 md:py-28">
-          <div className="container px-4 md:px-6">
-            <h2 className="max-w-lg text-title font-bold">People who moved with it</h2>
-            <div className="mt-12 grid gap-12 md:grid-cols-2 md:gap-16">
-              {quotes.map((q) => (
-                <figure key={q.name}>
-                  <blockquote className="font-headline text-title-sm font-medium leading-snug text-foreground">
-                    &ldquo;{q.quote}&rdquo;
-                  </blockquote>
-                  <figcaption className="mt-6 flex items-center gap-3">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-sm font-bold text-primary" aria-hidden="true">
-                      {q.initials}
-                    </span>
-                    <span>
-                      <span className="block font-semibold">{q.name}</span>
-                      <span className="block text-sm text-muted-foreground">{q.note}</span>
-                    </span>
-                  </figcaption>
-                </figure>
-              ))}
             </div>
           </div>
         </section>
