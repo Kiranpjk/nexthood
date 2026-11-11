@@ -68,7 +68,7 @@ export default function Home() {
         {/* Hero */}
         <section className="container px-4 pb-20 pt-12 md:px-6 md:pb-28 md:pt-20">
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-            <div className="motion-safe:animate-in motion-safe:fade-in-0 motion-safe:slide-in-from-bottom-2 motion-safe:duration-700">
+            <div className="motion-safe:animate-in motion-safe:fade-in-50 motion-safe:slide-in-from-bottom-2 motion-safe:duration-500 motion-safe:ease-out">
               <h1 className="text-display font-bold">
                 Know the street before you sign the lease.
               </h1>
