@@ -16,7 +16,7 @@ export default function AuthLayout({ heading, body, children }: AuthLayoutProps)
         <div className="mx-auto grid max-w-5xl items-stretch gap-10 lg:grid-cols-2 lg:gap-16">
           <section className="hidden flex-col justify-between overflow-hidden rounded-2xl bg-secondary lg:flex" aria-hidden="true">
             <div className="p-10">
-              <p className="font-headline text-title font-bold text-primary">{heading}</p>
+              <p className="font-headline text-title-sm font-semibold text-primary">{heading}</p>
               <p className="mt-4 max-w-sm leading-relaxed text-foreground/80">{body}</p>
             </div>
             <NeighborhoodTile name="Indiranagar" city="Bengaluru" className="h-64 bg-transparent" />
