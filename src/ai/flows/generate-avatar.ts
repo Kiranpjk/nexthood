@@ -27,7 +27,7 @@ const generateAvatarFlow = ai.defineFlow(
   },
   async () => {
     const {media} = await ai.generate({
-      model: 'googleai/gemini-2.0-flash-preview-image-generation',
+      model: 'googleai/gemini-3.1-flash-image',
       prompt: 'A simple, abstract, gender-neutral, minimalist geometric avatar icon for a user profile. Clean, modern design on a soft pastel background.',
       config: {
         responseModalities: ['IMAGE'],
