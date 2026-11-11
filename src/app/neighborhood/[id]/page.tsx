@@ -8,8 +8,10 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, DollarSign, Footprints, School, MapPin } from "lucide-react";
 
-export default function NeighborhoodDetailPage({ params }: { params: { id: string } }) {
-  const neighborhood = neighborhoods.find(n => n.id.toString() === params.id);
+export default async function NeighborhoodDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  // Next.js 15 passes params as a Promise
+  const { id } = await params;
+  const neighborhood = neighborhoods.find(n => n.id.toString() === id);
 
   if (!neighborhood) {
     notFound();

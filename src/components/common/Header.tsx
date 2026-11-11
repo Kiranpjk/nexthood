@@ -5,7 +5,7 @@ import Link from "next/link";
 import Logo from "../ui/logo";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/context/AuthContext";
-import { auth } from "@/lib/firebase";
+import { requireAuth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
@@ -26,7 +26,7 @@ export default function Header() {
   const pathname = usePathname();
 
   const handleLogout = async () => {
-    await signOut(auth);
+    await signOut(requireAuth());
     router.push('/');
   };
 

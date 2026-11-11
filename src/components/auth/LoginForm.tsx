@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, getAdditionalUserInfo } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { requireAuth } from '@/lib/firebase';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -40,7 +40,7 @@ export default function LoginForm() {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, values.email, values.password);
+      await signInWithEmailAndPassword(requireAuth(), values.email, values.password);
       const redirectPath = sessionStorage.getItem('redirectAfterLogin');
       sessionStorage.removeItem('redirectAfterLogin');
       router.push(redirectPath || '/dashboard');
@@ -59,7 +59,7 @@ export default function LoginForm() {
     setIsGoogleLoading(true);
     try {
       const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(requireAuth(), provider);
       const additionalInfo = getAdditionalUserInfo(result);
       
       if (additionalInfo?.isNewUser) {
