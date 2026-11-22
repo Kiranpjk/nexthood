@@ -10,6 +10,7 @@ import { requireAuth } from '@/lib/firebase';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { getErrorMessage } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
@@ -53,10 +54,10 @@ export default function SignUpForm() {
       }
       // New user signup always goes to onboarding
       router.push('/onboarding');
-    } catch (error: any) {
+    } catch (error) {
       toast({
         title: 'Sign Up Failed',
-        description: error.message || 'An unexpected error occurred.',
+        description: getErrorMessage(error, 'An unexpected error occurred.'),
         variant: 'destructive',
       });
     } finally {
@@ -78,10 +79,10 @@ export default function SignUpForm() {
         sessionStorage.removeItem('redirectAfterLogin');
         router.push(redirectPath || '/dashboard');
       }
-    } catch (error: any) {
+    } catch (error) {
       toast({
         title: 'Google Sign-In Failed',
-        description: error.message || 'Could not sign in with Google.',
+        description: getErrorMessage(error, 'Could not sign in with Google.'),
         variant: 'destructive',
       });
     } finally {

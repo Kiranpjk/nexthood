@@ -6,10 +6,10 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import Header from '@/components/common/Header';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { getErrorMessage } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { updateProfile } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Loader2 } from 'lucide-react';
@@ -60,10 +60,10 @@ export default function ProfilePage() {
             description: 'Your profile information has been saved.',
         });
         router.refresh();
-    } catch (error: any) {
+    } catch (error) {
         toast({
             title: 'Update Failed',
-            description: error.message,
+            description: getErrorMessage(error, 'Could not save your profile.'),
             variant: 'destructive'
         });
     } finally {
