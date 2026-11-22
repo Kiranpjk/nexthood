@@ -39,11 +39,15 @@ next-env.d.ts
 
 .genkit/*
 
-# env files with keys
+# env files with keys (the example file is committed)
 .env*
 !.env.example
-.env*
 
 # firebase
 firebase-debug.log
 firestore-debug.log
+
+# local tool junk
+pglite-debug.log
+*-debug.log
+.modified
