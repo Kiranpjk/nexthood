@@ -80,3 +80,11 @@ GitHub Actions, in `.github/workflows/`:
 - **`ci.yml`** runs on every push to `main` and every pull request: `npm ci`, lint, typecheck, tests and a production build, with npm and Next.js build caches.
 - **`docker.yml`** builds the Docker image on pull requests, and on pushes to `main` or `v*` tags publishes it to `ghcr.io/kiranpjk/nexthood` (tags: `latest`, `main`, commit SHA, and the version for tags) using the built-in `GITHUB_TOKEN`.
 - **Dependabot** (`.github/dependabot.yml`) opens weekly update PRs for npm packages, GitHub Actions and the Docker base image.
+
+## Security
+
+Dependency audit (Nov 2026): `npm audit` went from 72 advisories (8 critical, 28 high, 32 moderate, 4 low) to 72 (0 critical, 12 high, 60 moderate, 0 low).
+
+- Upgraded Next.js 15.3.8 → 15.5.29 (patch line of the same major) and Vitest 3 → 4 (dev only).
+- `overrides` in `package.json` move `@grpc/grpc-js` (pinned old by Firebase), `sharp` and Next.js's bundled `postcss` to patched versions.
+- The 12 remaining high advisories all come from Genkit, which still depends on Zod 3 and OpenTelemetry 1.x; there is no patched Genkit release yet. Most moderates are in the same Genkit/OpenTelemetry tree. Dependabot will pick up fixes when they ship.
